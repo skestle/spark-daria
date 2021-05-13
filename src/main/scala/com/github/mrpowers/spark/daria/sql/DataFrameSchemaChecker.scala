@@ -39,7 +39,7 @@ private[sql] class DataFrameSchemaChecker(df: DataFrame, requiredSchema: StructT
   val missingStructFields: Seq[StructField] = diff(requiredSchema, df.schema)
 
   def missingStructFieldsMessage(): String = {
-    s"The [${missingStructFields.mkString(", ")}] StructFields are not included in the DataFrame with the following StructFields [${df.schema.toString()}]"
+    s"The [${missingStructFields.mkString(", ")}] StructFields are not included in the DataFrame with the following StructFields [StructType(${df.schema.mkString(", ")})]"
   }
 
   def validateSchema(): Unit = {
